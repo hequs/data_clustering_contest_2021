@@ -1,0 +1,50 @@
+<div class="col mb-4 thread">
+    <div class="card h-100 overflow-hidden shadow-sm">
+        <div class="row no-gutters h-100">
+            <div class="col d-flex flex-column">
+                <div class="card-body rounded-top position-relative">
+                    <h5 class="card-title mb-0">{{channel.title}}</h5>
+                    <span class="font-italic">{% if 'title_t' in channel and channel.title_t != channel.title %} {{channel.title_t}} {% endif %}</span>
+                    <p class="card-text text-muted">
+                        {{channel.subscribers}} subs, {{channel.counters.posts}} posts<br>
+                        <a class="text-muted stretched-link" data-toggle="collapse" href="#collapse{{loop_index}}">Show messages</a><br>
+                        {{channel.description}}
+                        {% if 'description_t' in channel and channel.description_t != channel.description %}
+                        <br><span class="font-italic">{{channel.description_t}}</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="collapse border-top" id="collapse{{loop_index}}">
+                    <div class="list-group list-group-flush">
+                        {% for post in channel.recent_posts %}
+                            <div href="" class="list-group-item position-relative overflow-hidden">
+                                <p class="mb-1">
+                                    <span class="font-weight-bold">{{post.type}}</span>
+                                    <span class="font-italic"> {% if 'title' in post %} "{{post.title}}" {% endif %}</span>
+                                    <span class="font-italic"> {% if 'performer' in post %} by {{post.performer}} {% endif %}</span>
+                                    <span class="font-italic"> {% if 'duration' in post %} duration {{post.duration}} {% endif %}</span>
+                                    <span class="font-italic"> {% if 'file_size' in post %} file_size {{post.file_size}} {% endif %}</span>
+                                    <span class="font-italic"> {% if 'file_name' in post %} file_name {{post.file_name}} {% endif %}</span>
+                                </p>
+                                <p class="mb-1 text-truncate-4">
+                                    {{post.text}}
+                                    {% if 'text_t' in post and post.text_t != post.text %}
+                                    <br><span class="font-italic">{{post.text_t}}</span>
+                                    {% endif %}
+                                </p>
+                                {% if 'link_preview' in post %}
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 lass="card-title"><a href="{{post.link_preview.url}}">{{post.link_preview.title}}</a> <span class="font-italic">(link preview)</span></h6>
+                                        <p class="card-text">{{post.link_preview.description}}</p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

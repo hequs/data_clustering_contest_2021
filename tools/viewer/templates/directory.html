@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+            <div class="mt-3 mb-4">
+                <nav class="nav nav-tabs">
+                    {% for lang_code in languages %}
+                    {% if lang_code in ('ru', 'en', 'fa', 'ar', 'uz') %}
+                    <a class="ml-3 mr-1 nav-item nav-link {% if lang_code == current_lang_code %}active{% endif %}" href="{{lang_code}}_{{current_cat_code}}.html">{{lang_code}} ({{lang_count.get(lang_code)}})</a>
+                    {% else %}
+                    <a class="ml-3 mr-1 nav-item nav-link {% if lang_code == current_lang_code %}active{% endif %}" href="{{lang_code}}_other.html">{{lang_code}} ({{lang_count.get(lang_code)}})</a>
+                    {% endif %}
+                    {% endfor %}
+                </nav>
+            </div>
+            <div class="mt-3 mb-4">
+                <nav class="nav nav-tabs">
+                    {% if current_lang_code in ('ru', 'en', 'fa', 'ar', 'uz') %}
+                    {% for cat_code in categories %}
+                    <a class="ml-3 mr-1 nav-item nav-link {% if cat_code == current_cat_code %}active{% endif %}" href="{{current_lang_code}}_{{cat_code}}.html">{{cat_code_names.get(cat_code)}} ({{items_count.get(current_lang_code).get(cat_code)}})</a>
+                    {% endfor %}
+                    {% endif %}
+                </nav>
+            </div>
+
+
+<div class="row row-cols-1 row-cols-lg-2">
+{% for channel in channels %}
+    {% with loop_index = loop.index %}
+    {% include "channel.html" %}
+    {% endwith %}
+{% endfor %}
+</div>
+{% endblock %}
