@@ -1,10 +1,17 @@
 # Data Clustering Contest 2021
 
 Telegram Data Clustering Contest 2021 solution by [Dark Lizard](https://contest.com/user/Dark-Lizard) 🦎
+
 - [Round 1](https://contest.com/docs/dc2021-r1) (February, 2021) - 1st  place - 🥇
 - [Round 2](https://contest.com/docs/dc2021-r2) (May, 2021) - 2nd place - 🥈
 
-Also see our prior Data Clustering Contest [submissions](https://github.com/IlyaGusev/tgcontest)!
+Team (alphabetical order):
+- https://github.com/DanAnastasyev
+- https://github.com/hequs
+- https://github.com/IlyaGusev
+- https://github.com/yandexgivemeofferplz
+
+See our prior Data Clustering Contest [submission](https://github.com/IlyaGusev/tgcontest)!
 
 ## Install
 Prerequisites: CMake
